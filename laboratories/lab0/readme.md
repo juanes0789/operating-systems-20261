@@ -206,7 +206,7 @@ Se completaron los módulos 1 al 5 de la plataforma RedHat como parte del proces
 ![Modulos 1-5](RedHat/maria.jpeg)
 
 ## Juan Esteban Mosquera
-![Modulos 1-5](RedHat/juanes.png)
+![Modulos 1-5](RedHat/Juanes.png)
 
 ---
 
