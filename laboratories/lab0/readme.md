@@ -200,7 +200,13 @@ rm -v projects/file* > output.txt
 
 Se completaron los módulos 1 al 5 de la plataforma RedHat como parte del proceso de familiarización con la terminal Linux.
 
-*(Aquí se adjuntan los pantallazos correspondientes en el repositorio.)*
+# Evidencia - Módulos RedHat
+
+## Maria Paula Mosquera
+![Modulos 1-5](RedHat/maria.jpeg)
+
+## Juan Esteban Mosquera
+![Modulos 1-5](RedHat/juanes.png)
 
 ---
 
@@ -237,19 +243,4 @@ Este laboratorio permitió comprender de manera práctica:
 
 Se logró desarrollar mayor confianza en el uso de la terminal y comprensión de cómo el sistema operativo gestiona archivos y directorios.
 
----
 
-# Estructura final del proyecto
-
-```
-operating-systems-20261/
-└── laboratories/
-    └── lab0/
-        ├── path.txt
-        ├── output.txt
-        ├── readme.md
-        └── projects/
-            ├── example/
-            ├── music/
-            └── photos/
-```
