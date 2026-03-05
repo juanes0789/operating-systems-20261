@@ -1,0 +1,10 @@
+# Ejecutables
+ticket_app
+test
+
+# Objetos
+*.o
+
+# Archivos de sistema y assets generados
+assets/ticket_*.txt
+.DS_Store
