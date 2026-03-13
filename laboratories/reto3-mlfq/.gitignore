@@ -1,0 +1,14 @@
+# Build artifacts
+*.o
+mlfq_sim
+
+# Generated outputs
+out/*.csv
+
+# IDE/project files
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+
