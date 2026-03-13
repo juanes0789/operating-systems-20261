@@ -19,11 +19,9 @@ git --version
 
 ## 2) Clonar el repositorio
 
-Reemplaza `<URL_DEL_REPO>` por la URL real de tu repositorio.
-
 ```bash
-git clone <URL_DEL_REPO>
-cd Reto3
+git clone https://github.com/juanes0789/operating-systems-20261.git
+cd operating-systems-20261/laboratories/reto3-mlfq
 ```
 
 ## 3) Compilar el proyecto
@@ -99,8 +97,8 @@ Si quieres una version ultra-corta para la portada del repo, usa esto:
 ```bash
 sudo apt update
 sudo apt install -y build-essential make git
-git clone <URL_DEL_REPO>
-cd Reto3
+git clone https://github.com/juanes0789/operating-systems-20261.git
+cd operating-systems-20261/laboratories/reto3-mlfq
 make clean
 make
 ./mlfq_sim --input data/processes_example.csv --output out/results.csv --html-output out/report.html --boost 20
