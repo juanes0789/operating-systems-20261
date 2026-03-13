@@ -62,6 +62,28 @@ static int ensure_parent_dir(const char *path) {
     return -1;
 }
 
+static int parse_int_field(const char *text, int *value) {
+    char *endptr;
+    long parsed;
+
+    if (!text || !value || text[0] == '\0') {
+        return -1;
+    }
+
+    errno = 0;
+    parsed = strtol(text, &endptr, 10);
+    if (errno != 0 || endptr == text || *endptr != '\0') {
+        return -1;
+    }
+
+    if (parsed < -2147483648L || parsed > 2147483647L) {
+        return -1;
+    }
+
+    *value = (int)parsed;
+    return 0;
+}
+
 int load_processes_csv(const char *path, Process **processes, size_t *count) {
     FILE *f;
     char line[LINE_BUF_SIZE];
@@ -94,7 +116,8 @@ int load_processes_csv(const char *path, Process **processes, size_t *count) {
         char *pid;
         char *arrival;
         char *burst;
-        char *saveptr = NULL;
+        char *comma1;
+        char *comma2;
         Process p;
 
         trim(line);
@@ -102,11 +125,27 @@ int load_processes_csv(const char *path, Process **processes, size_t *count) {
             continue;
         }
 
-        pid = strtok_r(line, ",", &saveptr);
-        arrival = strtok_r(NULL, ",", &saveptr);
-        burst = strtok_r(NULL, ",", &saveptr);
+        comma1 = strchr(line, ',');
+        if (!comma1) {
+            free(arr);
+            fclose(f);
+            return -1;
+        }
+        *comma1 = '\0';
 
-        if (!pid || !arrival || !burst) {
+        comma2 = strchr(comma1 + 1, ',');
+        if (!comma2) {
+            free(arr);
+            fclose(f);
+            return -1;
+        }
+        *comma2 = '\0';
+
+        pid = line;
+        arrival = comma1 + 1;
+        burst = comma2 + 1;
+
+        if (strchr(burst, ',') != NULL) {
             free(arr);
             fclose(f);
             return -1;
@@ -124,8 +163,12 @@ int load_processes_csv(const char *path, Process **processes, size_t *count) {
 
         memset(&p, 0, sizeof(Process));
         strcpy(p.pid, pid);
-        p.arrival_time = (int)strtol(arrival, NULL, 10);
-        p.burst_time = (int)strtol(burst, NULL, 10);
+
+        if (parse_int_field(arrival, &p.arrival_time) != 0 || parse_int_field(burst, &p.burst_time) != 0) {
+            free(arr);
+            fclose(f);
+            return -1;
+        }
 
         if (p.arrival_time < 0 || p.burst_time <= 0) {
             free(arr);
