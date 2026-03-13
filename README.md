@@ -36,19 +36,15 @@ make
 ./mlfq_sim --input data/processes_example.csv --output out/results.csv --html-output out/report.html --boost 20
 ```
 
-## Documentacion del laboratorio
+## Documentacion publica del laboratorio
 
 Dentro de `laboratories/reto3-mlfq/docs/` se incluyen:
 
-- informe final detallado
-- justificacion tecnica del proyecto
-- validacion teorica del escenario grande
 - guia de reproduccion en Ubuntu
-- guion narrativo de sustentacion
+- validacion teorica del escenario grande
 
 ## Nota
 
-El detalle completo del laboratorio, su arquitectura y sus casos de prueba estan documentados en:
+El detalle operativo del laboratorio, su arquitectura, ejecucion y casos de prueba publicos estan documentados en:
 
 - `laboratories/reto3-mlfq/README.md`
-

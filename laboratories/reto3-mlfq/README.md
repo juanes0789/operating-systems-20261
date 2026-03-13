@@ -21,13 +21,10 @@ Este proyecto implementa un scheduler **Multi-Level Feedback Queue (MLFQ)** por 
 - `src/metrics.c`: metricas y salida tabular por consola
 - `src/report.c`: generacion del reporte HTML con timeline, eventos y snapshots
 - `src/main.c`: runner/CLI
-- `data/processes_example.csv`: escenario sugerido
+- `data/processes_example.csv`: escenario base
 - `data/processes_stress_mlfq.csv`: escenario grande de validacion
-- `out/results.csv`: salida CSV generada
-- `out/report.html`: reporte HTML generado por defecto
-- `docs/analysis.md`: analisis conceptual
+- `docs/guia_reproduccion_ubuntu.md`: guia para Ubuntu
 - `docs/mlfq_theoretical_validation.md`: resultados teoricos esperados del escenario grande
-- `docs/project_justification.md`: sustento tecnico del proyecto
 
 ## Formato de entrada
 
@@ -41,8 +38,10 @@ P2,1,4
 
 ## Build y ejecucion
 
+Desde la raiz de este laboratorio:
+
 ```bash
-cd "/Users/juanestebanmosquera/Documents/UdeA/2026-1/SO/Reto3"
+make clean
 make
 ./mlfq_sim --input data/processes_example.csv --output out/results.csv --html-output out/report.html --boost 20
 ```
@@ -65,9 +64,9 @@ Por proceso:
 Cada ejecucion puede generar un reporte HTML autocontenido con:
 
 - resumen de configuracion y metricas,
-- Gantt de CPU,
+- Gantt de CPU por colas `Q0`, `Q1` y `Q2`,
 - linea de vida por proceso,
-- tabla de eventos (arrival, dispatch, preemption, demotion, boost, finish),
+- tabla de eventos (`arrival`, `dispatch`, `preemption`, `demotion`, `boost`, `finish`),
 - snapshots del estado de `Q0`, `Q1` y `Q2` por ciclo.
 
 Parametro opcional disponible:
@@ -82,10 +81,9 @@ Para validacion fuerte del scheduler (12 procesos, llegadas escalonadas y cargas
 ./mlfq_sim --input data/processes_stress_mlfq.csv --output out/results_stress.csv --html-output out/report_stress.html --boost 20
 ```
 
-Referencias:
+Referencia publica:
 
 - `docs/mlfq_theoretical_validation.md`
-- `docs/project_justification.md`
 - `docs/guia_reproduccion_ubuntu.md`
 
 ## Notas de comportamiento
