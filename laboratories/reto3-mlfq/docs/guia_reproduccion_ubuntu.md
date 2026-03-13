@@ -38,22 +38,26 @@ Si todo sale bien, se genera el ejecutable `mlfq_sim` en la raiz del proyecto.
 ## 4) Ejecutar el caso base (ejemplo del enunciado)
 
 ```bash
-./mlfq_sim --input data/processes_example.csv --output out/results.csv --boost 20
+./mlfq_sim --input data/processes_example.csv --output out/results.csv --html-output out/report.html --boost 20
 ```
 
-Archivo generado:
+Archivos generados:
 
 - `out/results.csv`
+- `out/report.html`
+
+Puedes abrir el reporte HTML con cualquier navegador en Ubuntu.
 
 ## 5) Ejecutar el caso grande de estres
 
 ```bash
-./mlfq_sim --input data/processes_stress_mlfq.csv --output out/results_stress.csv --boost 20
+./mlfq_sim --input data/processes_stress_mlfq.csv --output out/results_stress.csv --html-output out/report_stress.html --boost 20
 ```
 
-Archivo generado:
+Archivos generados:
 
 - `out/results_stress.csv`
+- `out/report_stress.html`
 
 ## 6) Validar salida esperada del caso grande
 
@@ -61,10 +65,11 @@ La referencia teorica esta en:
 
 - `docs/mlfq_theoretical_validation.md`
 
-Puedes inspeccionar el resultado generado con:
+Puedes inspeccionar los resultados generados con:
 
 ```bash
 cat out/results_stress.csv
+xdg-open out/report_stress.html
 ```
 
 ## 7) Experimentos recomendados (analisis)
@@ -72,19 +77,19 @@ cat out/results_stress.csv
 ### Sin boost (posible starvation)
 
 ```bash
-./mlfq_sim --input data/processes_stress_mlfq.csv --output out/results_stress_boost0.csv --boost 0
+./mlfq_sim --input data/processes_stress_mlfq.csv --output out/results_stress_boost0.csv --html-output out/report_stress_boost0.html --boost 0
 ```
 
 ### Boost frecuente
 
 ```bash
-./mlfq_sim --input data/processes_stress_mlfq.csv --output out/results_stress_boost5.csv --boost 5
+./mlfq_sim --input data/processes_stress_mlfq.csv --output out/results_stress_boost5.csv --html-output out/report_stress_boost5.html --boost 5
 ```
 
 ### Boost moderado (referencia)
 
 ```bash
-./mlfq_sim --input data/processes_stress_mlfq.csv --output out/results_stress_boost20.csv --boost 20
+./mlfq_sim --input data/processes_stress_mlfq.csv --output out/results_stress_boost20.csv --html-output out/report_stress_boost20.html --boost 20
 ```
 
 ## 8) Comandos minimos para README del repo
@@ -98,8 +103,8 @@ git clone <URL_DEL_REPO>
 cd Reto3
 make clean
 make
-./mlfq_sim --input data/processes_example.csv --output out/results.csv --boost 20
-./mlfq_sim --input data/processes_stress_mlfq.csv --output out/results_stress.csv --boost 20
+./mlfq_sim --input data/processes_example.csv --output out/results.csv --html-output out/report.html --boost 20
+./mlfq_sim --input data/processes_stress_mlfq.csv --output out/results_stress.csv --html-output out/report_stress.html --boost 20
 ```
 
 ## 9) Limpieza del proyecto
@@ -107,4 +112,3 @@ make
 ```bash
 make clean
 ```
-

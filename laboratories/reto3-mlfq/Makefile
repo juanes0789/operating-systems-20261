@@ -1,6 +1,6 @@
 CC = cc
 CFLAGS = -std=c11 -Wall -Wextra -Wpedantic -Iinclude
-SRC = src/main.c src/scheduler.c src/io.c src/metrics.c
+SRC = src/main.c src/scheduler.c src/io.c src/metrics.c src/report.c
 OBJ = $(SRC:.c=.o)
 TARGET = mlfq_sim
 

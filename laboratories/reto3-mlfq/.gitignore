@@ -4,6 +4,7 @@ mlfq_sim
 
 # Generated outputs
 out/*.csv
+out/*.html
 
 # IDE/project files
 .idea/
